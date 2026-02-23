@@ -29,5 +29,32 @@ Window::Window(glm::vec2 size, const std::string& title)
 Window::~Window()
 {
     glfwDestroyWindow(m_window);
-    glfwTerminate();
+}
+
+Window::Window(Window&& other) noexcept 
+{
+    move(std::move(other));
+}
+
+Window& Window::operator=(Window&& other) noexcept
+{
+    if (this != &other) 
+    {
+        if (m_window != nullptr)
+            glfwDestroyWindow(m_window);
+    
+        move(std::move(other));
+    }
+    return *this;
+}
+
+void Window::move(Window&& other) 
+{
+    m_window = other.m_window;
+    other.m_window = nullptr;
+
+    m_size = other.m_size;
+    other.m_size = {0, 0};
+
+    m_title = std::move(other.m_title);
 }
