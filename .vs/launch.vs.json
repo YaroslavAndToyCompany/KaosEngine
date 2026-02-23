@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "KaosEngine.exe",
+      "name": "KaosEngine.exe",
+      "env": {
+        "PATH": "${env.PATH};${projectDir}/build/_deps/glfw-build/src;${projectDir}/build/_deps/assimp-build/bin"
+      }
+    }
+  ]
+}
