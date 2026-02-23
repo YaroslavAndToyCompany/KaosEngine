@@ -25,14 +25,11 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     COMPILE_WARNING_AS_ERROR OFF
 )
 
-
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/include")
 
 find_package(OpenGL REQUIRED)
 
 target_link_libraries(KaosEngine PRIVATE glm::glm)
-
-
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
