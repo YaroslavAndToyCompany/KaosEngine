@@ -1,16 +1,6 @@
-#include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <imgui.h>
-#include <glm/glm.hpp>
-#include <entt/entt.hpp>
-#include <assimp/aabb.h>
+#include "Core/Window.hpp"
 
 int main() {
-    glfwInit();
-
-    std::cout << "Hello, World!" << std::endl;
-
-    glfwTerminate();
+    Window m_window({1280, 720}, "Kaos Mega Engine");
     return 0;
 }
