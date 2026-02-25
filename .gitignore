@@ -1,4 +1,9 @@
+# --- build ---
+
 build/
 build-release/
 build-debug/
 out/
+
+# --- docs ---
+docs/.obsidian

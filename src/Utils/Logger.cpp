@@ -15,13 +15,22 @@ void Logger::log(std::string_view className, std::string_view message, ErrType e
     std::string errTypeStr;
 
     switch (errorType) {
-    case ErrType::INFO:
-        errTypeStr = "INFO";
-    case ErrType::WARNING:
-        errTypeStr = "WARNING";
-    case ErrType::ERROR:
-        errTypeStr = "ERROR";
+        case ErrType::INFO:
+        {
+            errTypeStr = "INFO";
+            break;
+        }
+        case ErrType::WARNING:
+        {
+            errTypeStr = "WARNING";
+            break;
+        }
+        case ErrType::ERROR:
+        {
+            errTypeStr = "ERROR";
+            break;
+        }
     }
 
-    std::cout << "[" << errTypeStr << "][" << className << "] " << message <<  std::endl;
+    std::cout << "[" << errTypeStr << "][" << className << "] " << message << std::endl;
 }
