@@ -22,10 +22,13 @@ public:
     void setTitle(const std::string& title) { m_title = std::move(title); }
     void setSize(const glm::vec2 size) { m_size = size; }
     void setShouldClose(bool value) { glfwSetWindowShouldClose(m_window, value); }
+	void swapBuffers();
+	void pollEvents();
 
 private:
     void move(Window&& other);
-
+    void gladLoader();
+  
     GLFWwindow* m_window;
 
     glm::vec2 m_size;

@@ -4,14 +4,16 @@
 class Engine 
 {
 public:
-    Engine(Window&& window);
+    Engine();
     ~Engine();
 
     Engine(const Engine&) = delete;
     Engine& operator=(const Engine&) = delete;
 
+    void run();
 private:
     Window m_window;
 
+    bool bIsRunning = true;
     static constexpr const char* m_className = "Engine";
 };

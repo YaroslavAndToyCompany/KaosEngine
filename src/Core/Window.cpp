@@ -58,3 +58,22 @@ void Window::move(Window&& other)
 
     m_title = std::move(other.m_title);
 }
+
+void Window::gladLoader()
+{
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		Logger::getInstance()->log(m_className, "Failed to initialize GLAD", Logger::ErrType::ERROR);
+		throw std::runtime_error("Failed to initialize GLAD");
+	}
+}
+
+void Window::swapBuffers()
+{
+    glfwSwapBuffers(m_window);
+}
+
+void Window::pollEvents()
+{
+    glfwPollEvents();
+}
