@@ -5,17 +5,18 @@
 
 #include "Utils//Logger.hpp"
 
-Engine::Engine(Window&& window)
-    : m_window(std::move(window))
-{
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        Logger::getInstance()->log(m_className, "Failed to initialize GLAD", Logger::ErrType::ERROR);
-        throw std::runtime_error("Failed to initialize GLAD");
-    }
-}
+Engine::Engine() {}
 
 Engine::~Engine()
 {
     glfwTerminate();
+}
+
+void Engine::run()
+{
+while(bIsRunning)
+  {
+    m_window.pollEvents();
+    m_window.swapBuffers();
+  }
 }
