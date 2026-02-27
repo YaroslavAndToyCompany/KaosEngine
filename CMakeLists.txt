@@ -16,7 +16,7 @@ file(GLOB_RECURSE PROJECT_HEADERS "${CMAKE_SOURCE_DIR}/include/*.hpp")
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}
     ${PROJECT_HEADERS}
-)
+ "include/Managers/SceneManager.h" "src/Managers/SceneManager.cpp" "include/Scene/Scene.h" "src/Scene/Scene.cpp" )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17

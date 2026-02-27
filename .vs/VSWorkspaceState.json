@@ -7,12 +7,13 @@
   },
   "ExpandedNodes": [
     "",
-    "\\out",
+    "\\include",
+    "\\include\\Core",
     "\\src",
+    "\\src\\Core",
     "\\vendors",
     "\\vendors\\glfw",
     "\\vendors\\glm"
   ],
-  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": true
 }
