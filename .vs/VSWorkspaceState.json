@@ -9,11 +9,14 @@
     "",
     "\\include",
     "\\include\\Core",
+    "\\include\\Scene",
     "\\src",
     "\\src\\Core",
+    "\\src\\Scene",
     "\\vendors",
     "\\vendors\\glfw",
     "\\vendors\\glm"
   ],
+  "SelectedNode": "\\src\\Scene",
   "PreviewInSolutionExplorer": true
 }
