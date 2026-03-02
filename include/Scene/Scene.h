@@ -1,4 +1,5 @@
 #pragma once
+#include "ECS/World.h"
 
 class Scene 
 {
@@ -9,4 +10,5 @@ public:
 	virtual void onExit();
 	virtual void updateScene();
 private:
+	World m_world;
 };
