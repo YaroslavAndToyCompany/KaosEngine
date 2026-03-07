@@ -1,14 +1,15 @@
 #pragma once
-#include "ECS/Entity.h"
+#include <string>
+#include "entt\entt.hpp"
 
 class Entity;
 
-class World 
+class World
 {
 public:
 	World();
 
-	Entity createEntity(std::string& tag);
+	Entity createEntity(std::string tag);
 
 	entt::registry& reg() { return m_registry; }
 private:
