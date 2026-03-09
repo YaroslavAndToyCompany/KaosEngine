@@ -2,6 +2,5 @@
 
 struct TransformComponent
 {
-	glm::vec4 Transform;
-
+	float Transform;
 };

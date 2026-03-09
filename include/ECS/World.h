@@ -14,4 +14,6 @@ public:
 	entt::registry& reg() { return m_registry; }
 private:
 	entt::registry m_registry;
+
+	friend class Entity;
 };

@@ -15,6 +15,7 @@ Engine::~Engine()
 void Engine::init()
 {
 	m_scenemanager.addScene(SceneID::MAIN_SCENE, std::make_unique<Scene>());
+    m_scenemanager.switchTo(SceneID::MAIN_SCENE);
 }
 
 void Engine::run()

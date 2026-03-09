@@ -1,12 +1,18 @@
 #include "scene/Scene.h"
+#include "ECS\Entity.h"
+#include "ECS\Components.h"
+#include <iostream>
 
-Scene::Scene() {}
+Scene::Scene() 
+{
+
+}
 
 void Scene::onEnter() 
 {
-	//auto player = m_world.createEntity("player");
-	// player->AddComponent();
-	// і так далі бялялялялял працювать з ентіті, потім зроблю нормалньл
+	auto player = m_world.createEntity("player");
+	player.addComponent<TransformComponent>();
+	std::cout << "Scene mark is called\n";
 }
 
 void Scene::onExit()

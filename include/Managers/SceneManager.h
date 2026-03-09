@@ -14,7 +14,7 @@ public:
 	SceneManager();
 
 	void addScene(SceneID m_sceneID, std::unique_ptr<Scene> m_scene);
-	void switchTo(SceneID);
+	void switchTo(SceneID sceneID);
 	void update(float m_deltaTime);
 
 private:
