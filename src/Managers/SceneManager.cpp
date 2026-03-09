@@ -25,7 +25,7 @@ void SceneManager::switchTo(SceneID SceneID)
 	}
 }
 
-void SceneManager::update(float m_deltaTime)
+void SceneManager::update(float deltaTime)
 {
-	
+
 }
