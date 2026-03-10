@@ -1,33 +1,28 @@
 #include "Core/Engine.hpp"
 
 #include <glad/glad.h>
-#include <stdexcept>
 #include <memory>
-#include "Utils//Logger.hpp"
 
 Engine::Engine() {}
 
-Engine::~Engine()
-{
-    glfwTerminate();
-}
+Engine::~Engine() {}
 
 void Engine::init()
 {
-	m_scenemanager.addScene(SceneID::MAIN_SCENE, std::make_unique<Scene>());
-    m_scenemanager.switchTo(SceneID::MAIN_SCENE);
+	m_sceneManager.addScene(SceneID::MAIN_SCENE, std::make_unique<Scene>());
+    m_sceneManager.switchTo(SceneID::MAIN_SCENE);
 }
 
 void Engine::run()
 {
-while(!glfwWindowShouldClose(m_window.GetWindow()))
-  {
-    float m_currentFrame = glfwGetTime();
-    float m_deltaTime = m_currentFrame - m_lastFrame;
-    m_lastFrame = m_currentFrame;
+    while(!m_window.shouldClose())
+    {
+        float m_currentFrame = glfwGetTime();
+        float m_deltaTime = m_currentFrame - m_lastFrame;
+        m_lastFrame = m_currentFrame;
 
-    m_scenemanager.update(m_deltaTime);
-    m_window.pollEvents();
-    m_window.swapBuffers();
-  }
+        m_sceneManager.update(m_deltaTime);
+        m_window.pollEvents();
+        m_window.swapBuffers();
+    }
 }

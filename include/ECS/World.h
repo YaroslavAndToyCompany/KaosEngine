@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "entt\entt.hpp"
+#include <entt/entt.hpp>
 
 class Entity;
 
@@ -14,6 +14,8 @@ public:
 	entt::registry& reg() { return m_registry; }
 private:
 	entt::registry m_registry;
+
+	static constexpr const char* m_className = "World";
 
 	friend class Entity;
 };

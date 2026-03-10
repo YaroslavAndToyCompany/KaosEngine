@@ -11,4 +11,6 @@ public:
 	virtual void updateScene();
 private:
 	World m_world;
+
+	static constexpr const char* m_className = "Scene";
 };

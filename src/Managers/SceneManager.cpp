@@ -1,14 +1,14 @@
 #include "Managers/SceneManager.h"
-#include <iostream>
+#include "Utils/Logger.hpp"
 
 SceneManager::SceneManager()
 {
-	std::cout << "SceneManager mark is called\n";
+	Logger::get()->log(m_className, "Mark is called");
 }
 
-void SceneManager::addScene(SceneID m_sceneID, std::unique_ptr<Scene> m_scene)
+void SceneManager::addScene(SceneID sceneID, std::unique_ptr<Scene> scene)
 {
-	m_scenes.emplace(m_sceneID, std::move(m_scene));
+	m_scenes.emplace(sceneID, std::move(scene));
 }
 
 void SceneManager::switchTo(SceneID SceneID)
