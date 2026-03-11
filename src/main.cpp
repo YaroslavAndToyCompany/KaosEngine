@@ -1,4 +1,3 @@
-#include "Core/Window.hpp"
 #include "Core/Engine.hpp"
 
 int main()

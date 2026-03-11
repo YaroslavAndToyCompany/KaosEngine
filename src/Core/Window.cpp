@@ -1,6 +1,7 @@
 #include "Core/Window.hpp"
 
 #include <stdexcept>
+#include <utility>
 
 #include "Utils/Logger.hpp"
 
@@ -33,31 +34,22 @@ Window::~Window()
 }
 
 Window::Window(Window&& other) noexcept 
-{
-    move(std::move(other));
-}
+    : m_window(std::exchange(other.m_window, nullptr)),
+      m_size(std::exchange(other.m_size, {0, 0})),
+      m_title(std::move(other.m_title))
+{}
 
 Window& Window::operator=(Window&& other) noexcept
 {
-    if (this != &other) 
-    {
-        if (m_window != nullptr)
-            glfwDestroyWindow(m_window);
-    
-        move(std::move(other));
-    }
+    Window(std::move(other)).swap(*this);
     return *this;
 }
 
-void Window::move(Window&& other) 
+void Window::swap(Window& other)
 {
-    m_window = other.m_window;
-    other.m_window = nullptr;
-
-    m_size = other.m_size;
-    other.m_size = {0, 0};
-
-    m_title = std::move(other.m_title);
+    std::swap(m_window, other.m_window);
+    std::swap(m_size, other.m_size);
+    std::swap(m_title, other.m_title);
 }
 
 void Window::gladLoader()
