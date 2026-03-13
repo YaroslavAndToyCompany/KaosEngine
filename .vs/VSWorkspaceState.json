@@ -8,15 +8,15 @@
   "ExpandedNodes": [
     "",
     "\\include",
-    "\\include\\Core",
     "\\include\\Scene",
     "\\src",
     "\\src\\Core",
+    "\\src\\Managers",
     "\\src\\Scene",
     "\\vendors",
     "\\vendors\\glfw",
     "\\vendors\\glm"
   ],
-  "SelectedNode": "\\src\\Scene",
+  "SelectedNode": "\\src\\Core\\Engine.cpp",
   "PreviewInSolutionExplorer": true
 }

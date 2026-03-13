@@ -15,7 +15,7 @@ public:
 
 	void addScene(SceneID m_sceneID, std::unique_ptr<Scene> m_scene);
 	void switchTo(SceneID sceneID);
-	void update(float deltaTime);
+	void update(float dt);
 
 private:
 	std::map<SceneID, std::unique_ptr<Scene>> m_scenes;

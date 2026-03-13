@@ -16,4 +16,5 @@ private:
 	entt::registry m_registry;
 
 	friend class Entity;
+	friend class System;
 };

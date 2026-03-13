@@ -25,7 +25,7 @@ void SceneManager::switchTo(SceneID SceneID)
 	}
 }
 
-void SceneManager::update(float deltaTime)
+void SceneManager::update(float dt)
 {
-
+	m_activescene->updateScene(dt);
 }

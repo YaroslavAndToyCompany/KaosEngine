@@ -1,5 +1,6 @@
 #pragma once
 #include "ECS/World.h"
+#include "ECS\RenderSystem.h"
 
 class Scene 
 {
@@ -8,7 +9,8 @@ public:
 
 	virtual void onEnter();
 	virtual void onExit();
-	virtual void updateScene();
+	virtual void updateScene(float dt);
 private:
 	World m_world;
+	RenderSystem m_renderer;
 };

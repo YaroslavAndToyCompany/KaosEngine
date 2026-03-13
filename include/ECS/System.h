@@ -1,15 +1,15 @@
 #pragma once
 #include "entt\entt.hpp"
+#include "ECS/World.h"
 
-class World;
 
 class System 
 {
 public:
-	virtual void update(float deltatime) = 0;
-private:
+	virtual void update(float deltatime, World& world) = 0;
+
 	template<typename... Components, typename Func>
-	void viewComp(World& world, Func)
+	void viewComp(World& world, Func func)
 	{
 		auto view = world.m_registry.view<Components...>();
 		for (auto entity : view)

@@ -20,7 +20,7 @@ void Scene::onExit()
 
 }
 
-void Scene::updateScene()
+void Scene::updateScene(float dt)
 {
-
+	m_renderer.update(dt, m_world);
 }
