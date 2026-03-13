@@ -1,6 +1,6 @@
 #include "ECS/World.h"
 #include "ECS/Entity.h"
-#include <iostream>
+#include "Utils/Logger.hpp"
 
 World::World()
 {
@@ -10,6 +10,6 @@ World::World()
 Entity World::createEntity(std::string tag)
 {
 	auto entity = m_registry.create();
-	std::cout << "Entity is created\n";
+	Logger::get()->log(m_className, "Entity is created");
 	return Entity(entity, this);
 }

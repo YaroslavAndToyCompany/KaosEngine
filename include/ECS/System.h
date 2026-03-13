@@ -1,6 +1,5 @@
 #pragma once
-#include "entt\entt.hpp"
-#include "ECS/World.h"
+#include <entt/entt.hpp>
 
 
 class System 

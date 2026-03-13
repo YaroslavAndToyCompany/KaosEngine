@@ -1,8 +1,7 @@
 #pragma once
 #include "entt/entt.hpp"
 #include "Utils/Logger.hpp"
-
-class World;
+#include "ECS/World.h"
 
 class Entity
 {
@@ -15,8 +14,8 @@ public:
 	T& addComponent(Args&&... args) 
 	{
 		if(!hasComponent<T>())
-			Logger::getInstance()->log(m_className, "Entity has already component", Logger::ErrType::ERROR);
-		return m_world->m_registry.emplace<T>(m_EntityHandler, std::forward<Args>(Args)...);
+			Logger::get()->log(m_className, "Entity has already component", Logger::ErrType::ERROR);
+		return m_world->m_registry.template emplace<T>(m_EntityHandler, std::forward<Args>(args)...);
 	}
 
 	template<typename T>

@@ -1,5 +1,5 @@
 #pragma once
-#include "scene/Scene.h"
+#include "Scene/Scene.h"
 #include <map>
 #include <memory>
 
@@ -13,11 +13,13 @@ class SceneManager
 public:
 	SceneManager();
 
-	void addScene(SceneID m_sceneID, std::unique_ptr<Scene> m_scene);
+	void addScene(SceneID sceneID, std::unique_ptr<Scene> scene);
 	void switchTo(SceneID sceneID);
 	void update(float dt);
 
 private:
 	std::map<SceneID, std::unique_ptr<Scene>> m_scenes;
 	Scene* m_activescene = nullptr;
+
+	static constexpr const char* m_className = "SceneManager";
 };

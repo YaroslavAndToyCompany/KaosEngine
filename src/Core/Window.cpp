@@ -1,6 +1,7 @@
 #include "Core/Window.hpp"
 
 #include <stdexcept>
+#include <utility>
 
 #include "Utils/Logger.hpp"
 
@@ -19,7 +20,7 @@ Window::Window(glm::vec2 size, const std::string& title)
     m_window = glfwCreateWindow(m_size.x, m_size.y, m_title.c_str(), NULL, NULL);
     if (m_window == NULL)
     {
-        Logger::getInstance()->log(m_className, "Failed to create GLFW window", Logger::ErrType::ERROR);
+        Logger::get()->log(m_className, "Failed to create GLFW window", Logger::ErrType::ERROR);
         glfwTerminate();
         throw std::runtime_error("Failed to create GLFW window");
     }
@@ -29,41 +30,33 @@ Window::Window(glm::vec2 size, const std::string& title)
 Window::~Window()
 {
     glfwDestroyWindow(m_window);
+    glfwTerminate();
 }
 
 Window::Window(Window&& other) noexcept 
-{
-    move(std::move(other));
-}
+    : m_window(std::exchange(other.m_window, nullptr)),
+      m_size(std::exchange(other.m_size, {0, 0})),
+      m_title(std::move(other.m_title))
+{}
 
 Window& Window::operator=(Window&& other) noexcept
 {
-    if (this != &other) 
-    {
-        if (m_window != nullptr)
-            glfwDestroyWindow(m_window);
-    
-        move(std::move(other));
-    }
+    Window(std::move(other)).swap(*this);
     return *this;
 }
 
-void Window::move(Window&& other) 
+void Window::swap(Window& other)
 {
-    m_window = other.m_window;
-    other.m_window = nullptr;
-
-    m_size = other.m_size;
-    other.m_size = {0, 0};
-
-    m_title = std::move(other.m_title);
+    std::swap(m_window, other.m_window);
+    std::swap(m_size, other.m_size);
+    std::swap(m_title, other.m_title);
 }
 
 void Window::gladLoader()
 {
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		Logger::getInstance()->log(m_className, "Failed to initialize GLAD", Logger::ErrType::ERROR);
+		Logger::get()->log(m_className, "Failed to initialize GLAD", Logger::ErrType::ERROR);
 		throw std::runtime_error("Failed to initialize GLAD");
 	}
 }

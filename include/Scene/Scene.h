@@ -13,4 +13,6 @@ public:
 private:
 	World m_world;
 	RenderSystem m_renderer;
+
+	static constexpr const char* m_className = "Scene";
 };

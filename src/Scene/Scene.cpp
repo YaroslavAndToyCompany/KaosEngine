@@ -1,7 +1,7 @@
-#include "scene/Scene.h"
-#include "ECS\Entity.h"
-#include "ECS\Components.h"
-#include <iostream>
+#include "Scene/Scene.h"
+#include "ECS/Entity.h"
+#include "ECS/Components.h"
+#include "Utils/Logger.hpp"
 
 Scene::Scene() 
 {
@@ -12,7 +12,7 @@ void Scene::onEnter()
 {
 	auto player = m_world.createEntity("player");
 	player.addComponent<TransformComponent>();
-	std::cout << "Scene mark is called\n";
+	Logger::get()->log(m_className, "Mark is called");
 }
 
 void Scene::onExit()

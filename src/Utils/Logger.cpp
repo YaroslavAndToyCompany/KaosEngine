@@ -3,7 +3,7 @@
 
 Logger* Logger::m_logger = nullptr;
 
-Logger* Logger::getInstance()
+Logger* Logger::get()
 {
     if (m_logger == nullptr)
         m_logger = new Logger();
@@ -12,25 +12,30 @@ Logger* Logger::getInstance()
 
 void Logger::log(std::string_view className, std::string_view message, ErrType errorType)
 {
-    std::string errTypeStr;
+    const char* errMessage = convertErrType(errorType);
+    const char* colorMessage = getColorFromErrType(errorType);
 
-    switch (errorType) {
-        case ErrType::INFO:
-        {
-            errTypeStr = "INFO";
-            break;
-        }
-        case ErrType::WARNING:
-        {
-            errTypeStr = "WARNING";
-            break;
-        }
-        case ErrType::ERROR:
-        {
-            errTypeStr = "ERROR";
-            break;
-        }
+    std::cout << colorMessage << "[" << errMessage << "][" << className << "] " << message << std::endl;
+}
+
+const char* Logger::convertErrType(ErrType errType)
+{
+    switch (errType) 
+    {
+        case ErrType::INFO:    return "INFO";
+        case ErrType::WARNING: return "WARNING";
+        case ErrType::ERROR:   return "ERROR";
+        default: return "Unknown";
     }
+}
 
-    std::cout << "[" << errTypeStr << "][" << className << "] " << message << std::endl;
+const char* Logger::getColorFromErrType(ErrType errType) 
+{
+    switch (errType) 
+    {
+        case ErrType::WARNING: return "\033[33m"; // Red
+        case ErrType::ERROR:   return "\033[31m"; // Yellow
+        case ErrType::INFO:                         
+        default: return "\033[0m";                // Reset
+    }
 }
