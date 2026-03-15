@@ -8,15 +8,12 @@
   "ExpandedNodes": [
     "",
     "\\include",
-    "\\include\\Scene",
+    "\\include\\Renderer",
     "\\src",
-    "\\src\\Core",
-    "\\src\\Managers",
-    "\\src\\Scene",
-    "\\vendors",
+    "\\src\\Renderer",
     "\\vendors\\glfw",
     "\\vendors\\glm"
   ],
-  "SelectedNode": "\\src\\Core\\Engine.cpp",
+  "SelectedNode": "\\include\\Renderer\\Renderer.h",
   "PreviewInSolutionExplorer": true
 }
