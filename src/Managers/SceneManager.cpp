@@ -1,4 +1,4 @@
-#include "Managers/SceneManager.h"
+#include "Managers/SceneManager.hpp"
 #include "Utils/Logger.hpp"
 
 SceneManager::SceneManager()

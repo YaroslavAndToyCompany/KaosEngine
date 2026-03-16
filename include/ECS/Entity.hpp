@@ -1,7 +1,7 @@
 #pragma once
 #include "entt/entt.hpp"
 #include "Utils/Logger.hpp"
-#include "ECS/World.h"
+#include "ECS/World.hpp"
 
 class Entity
 {

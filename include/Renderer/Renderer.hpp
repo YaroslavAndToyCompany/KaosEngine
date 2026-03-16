@@ -1,5 +1,5 @@
 #pragma once
-#include "ECS/Components.h"
+#include "ECS/Components.hpp"
 #include <glm/glm.hpp>
 
 class Renderer 

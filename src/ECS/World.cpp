@@ -1,5 +1,5 @@
-#include "ECS/World.h"
-#include "ECS/Entity.h"
+#include "ECS/World.hpp"
+#include "ECS/Entity.hpp"
 #include "Utils/Logger.hpp"
 
 World::World()

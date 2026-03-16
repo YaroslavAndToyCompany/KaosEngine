@@ -1,5 +1,5 @@
-#include "ECS\RenderSystem.h"
-#include "ECS\Components.h"
+#include "ECS/RenderSystem.hpp"
+#include "ECS/Components.hpp"
 #include <iostream>
 
 RenderSystem::RenderSystem()

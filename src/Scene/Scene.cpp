@@ -1,6 +1,6 @@
-#include "Scene/Scene.h"
-#include "ECS/Entity.h"
-#include "ECS/Components.h"
+#include "Scene/Scene.hpp"
+#include "ECS/Entity.hpp"
+#include "ECS/Components.hpp"
 #include "Utils/Logger.hpp"
 
 Scene::Scene() 

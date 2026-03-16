@@ -1,6 +1,6 @@
 #pragma once
-#include "ECS/World.h"
-#include "ECS\RenderSystem.h"
+#include "ECS/World.hpp"
+#include "ECS/RenderSystem.hpp"
 
 class Scene 
 {
