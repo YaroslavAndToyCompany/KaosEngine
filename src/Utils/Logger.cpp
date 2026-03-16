@@ -1,13 +1,11 @@
 #include "Utils/Logger.hpp"
 #include <iostream>
 
-Logger* Logger::m_logger = nullptr;
-
-Logger* Logger::get()
+Logger& Logger::get()
 {
-    if (m_logger == nullptr)
-        m_logger = new Logger();
-    return m_logger;
+    static Logger instance;
+
+    return instance;
 }
 
 void Logger::log(std::string_view className, std::string_view message, ErrType errorType)

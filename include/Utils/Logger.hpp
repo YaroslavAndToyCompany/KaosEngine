@@ -14,7 +14,7 @@ public:
     Logger(const Logger&) = delete;
     Logger& operator=(const Logger&) = delete;
 
-    static Logger* get();
+    static Logger& get();
 
     void log(std::string_view className, std::string_view message, ErrType errorType = ErrType::INFO);
 
@@ -23,6 +23,4 @@ private:
     
     const char* convertErrType(ErrType errType);
     const char* getColorFromErrType(ErrType errType);
-
-    static Logger* m_logger;
 };

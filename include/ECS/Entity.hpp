@@ -14,7 +14,7 @@ public:
 	T& addComponent(Args&&... args) 
 	{
 		if(!hasComponent<T>())
-			Logger::get()->log(m_className, "Entity has already component", Logger::ErrType::ERROR);
+			Logger::get().log(m_className, "Entity has already component", Logger::ErrType::ERROR);
 		return m_world->m_registry.template emplace<T>(m_EntityHandler, std::forward<Args>(args)...);
 	}
 

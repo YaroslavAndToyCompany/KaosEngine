@@ -3,7 +3,7 @@
 
 SceneManager::SceneManager()
 {
-	Logger::get()->log(m_className, "Mark is called");
+	Logger::get().log(m_className, "Mark is called");
 }
 
 void SceneManager::addScene(SceneID sceneID, std::unique_ptr<Scene> scene)

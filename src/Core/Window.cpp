@@ -20,7 +20,7 @@ Window::Window(glm::vec2 size, const std::string& title)
     m_window = glfwCreateWindow(m_size.x, m_size.y, m_title.c_str(), NULL, NULL);
     if (m_window == NULL)
     {
-        Logger::get()->log(m_className, "Failed to create GLFW window", Logger::ErrType::ERROR);
+        Logger::get().log(m_className, "Failed to create GLFW window", Logger::ErrType::ERROR);
         glfwTerminate();
         throw std::runtime_error("Failed to create GLFW window");
     }
@@ -56,7 +56,7 @@ void Window::gladLoader()
 {
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		Logger::get()->log(m_className, "Failed to initialize GLAD", Logger::ErrType::ERROR);
+		Logger::get().log(m_className, "Failed to initialize GLAD", Logger::ErrType::ERROR);
 		throw std::runtime_error("Failed to initialize GLAD");
 	}
 }
