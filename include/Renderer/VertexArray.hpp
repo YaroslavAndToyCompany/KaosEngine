@@ -8,6 +8,7 @@ public:
 	VertexArray();
 
 	void bind();
+	void unbind();
 	void addVertexBuffer();
 private:
 	uint32_t m_rendererID;

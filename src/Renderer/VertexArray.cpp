@@ -12,6 +12,11 @@ void VertexArray::bind()
 	glBindVertexArray(m_rendererID);
 }
 
+void VertexArray::unbind()
+{
+	glBindVertexArray(0);
+}
+
 void VertexArray::addVertexBuffer()
 {
 	
