@@ -24,3 +24,8 @@ void VertexBuffer::unbind() const
 {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+
+void VertexBuffer::setBufferLayout(Buffer& layout)
+{
+	layout = m_layout;
+}

@@ -8,12 +8,12 @@
   "ExpandedNodes": [
     "",
     "\\include",
+    "\\include\\ECS",
+    "\\include\\Managers",
     "\\include\\Renderer",
     "\\src",
-    "\\src\\Renderer",
-    "\\vendors\\glfw",
-    "\\vendors\\glm"
+    "\\src\\Renderer"
   ],
-  "SelectedNode": "\\include\\Renderer\\Renderer.h",
+  "SelectedNode": "\\include\\Renderer\\VertexBuffer.hpp",
   "PreviewInSolutionExplorer": true
 }
