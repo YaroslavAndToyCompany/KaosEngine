@@ -23,6 +23,12 @@ void VertexArray::addVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuf
 	this->bind();
 	vertexBuffer->bind();
 	const Buffer& bufferLayout = vertexBuffer->getBufferLayout();
-	if(bufferLayout.getBufferElements().empty())
+	if (bufferLayout.getBufferElements().empty())
 		Logger::get().log(m_className, "Buffer elements is empty!", Logger::ErrType::ERROR);
+
+	//for(BufferElements& element : bufferLayout.getBufferElements())
+	//{
+	//	glEnableVertexAttribArray();
+	//	glVertexAttribPointer(vertexBuffer, element.m_type, );
+	//}
 }

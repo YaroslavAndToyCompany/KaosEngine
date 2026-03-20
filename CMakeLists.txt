@@ -16,7 +16,7 @@ file(GLOB_RECURSE PROJECT_HEADERS "${CMAKE_SOURCE_DIR}/include/*.hpp")
 add_executable(${PROJECT_NAME}
     ${PROJECT_SOURCES}
     ${PROJECT_HEADERS}
- "include/Managers/SceneManager.hpp" "src/Managers/SceneManager.cpp" "include/Scene/Scene.hpp" "src/Scene/Scene.cpp"  "include/ECS/Entity.hpp" "src/ECS/Entity.cpp"  "include/ECS/Components.hpp" "include/ECS/World.hpp" "src/ECS/World.cpp"  "include/ECS/System.hpp"  "include/ECS/RenderSystem.hpp" "src/ECS/RenderSystem.cpp" "include/Renderer/Renderer.hpp" "src/Renderer/Renderer.cpp" "include/Renderer/VertexArray.hpp" "src/Renderer/VertexArray.cpp" "include/Renderer/VertexBuffer.hpp" "src/Renderer/VertexBuffer.cpp" "include/Renderer/Buffer.hpp" "src/Renderer/Buffer.cpp")
+ "include/Managers/SceneManager.hpp" "src/Managers/SceneManager.cpp" "include/Scene/Scene.hpp" "src/Scene/Scene.cpp"  "include/ECS/Entity.hpp" "src/ECS/Entity.cpp"  "include/ECS/Components.hpp" "include/ECS/World.hpp" "src/ECS/World.cpp"  "include/ECS/System.hpp"  "include/ECS/RenderSystem.hpp" "src/ECS/RenderSystem.cpp" "include/Renderer/Renderer.hpp" "src/Renderer/Renderer.cpp" "include/Renderer/VertexArray.hpp" "src/Renderer/VertexArray.cpp" "include/Renderer/VertexBuffer.hpp" "src/Renderer/VertexBuffer.cpp" "include/Renderer/Buffer.hpp" "src/Renderer/Buffer.cpp" "include/Renderer/Shader.hpp" "src/Renderer/Shader.cpp")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
