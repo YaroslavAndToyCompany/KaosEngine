@@ -16,7 +16,6 @@ public:
 private:
     Window m_window;
     SceneManager m_sceneManager;
-private:
     float m_lastFrame = 0.0f;
 
     static constexpr const char* m_className = "Engine";

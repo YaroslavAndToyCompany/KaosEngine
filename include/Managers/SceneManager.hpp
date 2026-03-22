@@ -19,7 +19,7 @@ public:
 
 private:
 	std::map<SceneID, std::unique_ptr<Scene>> m_scenes;
-	Scene* m_activescene = nullptr;
+	Scene* m_activeScene = nullptr;
 
 	static constexpr const char* m_className = "SceneManager";
 };

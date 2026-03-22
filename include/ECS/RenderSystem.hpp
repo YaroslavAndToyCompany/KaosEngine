@@ -11,5 +11,5 @@ public:
 	virtual void update(float deltatime, World& world) override;
 
 private:
-	
+	static constexpr const char* m_className = "RenderSystem";	
 };

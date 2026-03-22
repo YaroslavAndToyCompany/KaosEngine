@@ -15,5 +15,6 @@ private:
 	uint32_t m_rendererID;
 	uint32_t m_vboIndexCounter = 0;
 	std::vector<std::shared_ptr<VertexBuffer>> m_vertexBuffers;
+	
 	static constexpr const char* m_className = "VertexArray";
 };

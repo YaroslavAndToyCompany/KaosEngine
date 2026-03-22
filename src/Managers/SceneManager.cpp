@@ -13,19 +13,19 @@ void SceneManager::addScene(SceneID sceneID, std::unique_ptr<Scene> scene)
 
 void SceneManager::switchTo(SceneID SceneID)
 {
-	auto activescene = m_scenes.find(SceneID);
+	auto activeScene = m_scenes.find(SceneID);
 	
-	if(activescene != m_scenes.end())
+	if(activeScene != m_scenes.end())
 	{
-		if (m_activescene)
-			m_activescene->onExit();
+		if (m_activeScene)
+			m_activeScene->onExit();
 		
-		m_activescene = activescene->second.get();
-		m_activescene->onEnter();
+		m_activeScene = activeScene->second.get();
+		m_activeScene->onEnter();
 	}
 }
 
 void SceneManager::update(float dt)
 {
-	m_activescene->updateScene(dt);
+	m_activeScene->updateScene(dt);
 }

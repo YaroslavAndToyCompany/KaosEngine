@@ -2,7 +2,6 @@
 #include <entt/entt.hpp>
 #include "ECS/World.hpp"
 
-
 class System 
 {
 public:

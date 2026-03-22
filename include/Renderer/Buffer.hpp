@@ -4,6 +4,7 @@
 #include <initializer_list>
 #include <cstdint>
 #include <glad/glad.h>
+#include <stdexcept>
 
 enum class ShaderType 
 {
@@ -26,6 +27,7 @@ static uint32_t dataTypeSize(ShaderType type)
 	case ShaderType::Int3:     return sizeof(int) * 3;
 	case ShaderType::Int4:     return sizeof(int) * 4;
 	case ShaderType::Bool:     return sizeof(bool);
+	default: throw std::runtime_error("Unknown ShaderType was passed");
 	}
 	return 0;
 }
@@ -46,6 +48,7 @@ static uint32_t getComponentCount(ShaderType type)
 	case ShaderType::Int3:    return 3;
 	case ShaderType::Int4:    return 4;
 	case ShaderType::Bool:    return 1;
+	default: throw std::runtime_error("Unknown ShaderType was passed");
 	}
 	return 0;
 }
@@ -65,6 +68,7 @@ static GLenum dataTypetoGL(ShaderType type)
 	case ShaderType::Int3:    return GL_INT;
 	case ShaderType::Int4:    return GL_INT;
 	case ShaderType::Bool:    return GL_BOOL;
+	default: throw std::runtime_error("Unknown ShaderType was passed");
 	}
 	return 0;
 }
@@ -87,13 +91,13 @@ class Buffer
 {
 public:
 	Buffer() {}
-	Buffer(std::initializer_list<BufferElements> bufferelements);
+	Buffer(std::initializer_list<BufferElements> bufferElements);
 
 	inline uint32_t getStride() const { return m_stride; }
-	inline const std::vector<BufferElements> getBufferElements() const { return m_bufferelements; }
+	inline const std::vector<BufferElements> getBufferElements() const { return m_bufferElements; }
 private:
 	void calcuteOffsetAndStride();
 
 	uint32_t m_stride = 0;
-	std::vector<BufferElements> m_bufferelements;
+	std::vector<BufferElements> m_bufferElements;
 };
