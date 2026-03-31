@@ -8,12 +8,15 @@
   "ExpandedNodes": [
     "",
     "\\include",
-    "\\include\\ECS",
+    "\\include\\Core",
     "\\include\\Managers",
     "\\include\\Renderer",
+    "\\include\\Scene",
+    "\\include\\Utils",
     "\\src",
+    "\\src\\Core",
     "\\src\\Renderer"
   ],
-  "SelectedNode": "\\src\\Renderer\\VertexArray.cpp",
+  "SelectedNode": "\\include\\Utils\\SlotMap.h",
   "PreviewInSolutionExplorer": true
 }
