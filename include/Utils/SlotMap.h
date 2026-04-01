@@ -32,13 +32,16 @@ class SlotMap
 
 public:
     SlotMap() = default;
-
+    SlotMap(const SlotMap&) = delete;
+    SlotMap& operator=(const SlotMap&) = delete;
+    SlotMap(SlotMap&&) = default;
+    SlotMap& operator=(SlotMap&&) = default;
     ~SlotMap()
     {
     for(Slot& slot : m_slots)
      {
-    if(slot.bIsActive)
-        reinterpret_cast<T*>(slot.m_data);
+        if (slot.bIsActive)
+            reinterpret_cast<T*>(slot.m_data)->~T();
      }
     }
 
@@ -66,7 +69,7 @@ public:
         return { index, slot.generation };
     }
 
-    T* get(AssetHandle handle)
+    const T* get(AssetHandle handle)
     {
         if (handle.m_index < m_slots.size())
         {

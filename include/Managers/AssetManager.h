@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Utils/SlotMap.h"
 
 
 class AssetManager 
