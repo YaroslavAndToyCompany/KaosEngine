@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <cstdint>
 struct TextureSpecs
 {
 	uint32_t m_width;
