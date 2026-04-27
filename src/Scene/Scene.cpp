@@ -12,7 +12,7 @@ void Scene::onEnter()
 {
 	auto player = m_world.createEntity("player");
 	player.addComponent<TransformComponent>();
-	Logger::get().log(m_className, "Mark is called");
+	Logger::get().log(m_className, Logger::ErrType::INFO, "Mark is called");
 }
 
 void Scene::onExit()

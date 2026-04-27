@@ -9,6 +9,8 @@ set(KAOS_ENGINE_SOURCES
 
     src/Managers/SceneManager.cpp
 
+    src/Memory/StackAllocator.cpp
+
     src/Scene/Scene.cpp
 
     src/Utils/Logger.cpp

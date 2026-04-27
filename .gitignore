@@ -11,3 +11,4 @@ docs/.obsidian
 # --- configs ---
 .vs
 .clangd
+.clang-format

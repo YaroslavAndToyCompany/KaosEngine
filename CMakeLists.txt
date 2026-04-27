@@ -15,7 +15,6 @@ add_subdirectory(src)
 add_executable(${PROJECT_NAME}
     ${KAOS_ENGINE_HEADERS}
     ${KAOS_ENGINE_SOURCES}
-    # "include/Managers/SceneManager.hpp" "src/Managers/SceneManager.cpp" "include/Scene/Scene.hpp" "src/Scene/Scene.cpp"  "include/ECS/Entity.hpp" "src/ECS/Entity.cpp"  "include/ECS/Components.hpp" "include/ECS/World.hpp" "src/ECS/World.cpp"  "include/ECS/System.hpp"  "include/ECS/RenderSystem.hpp" "src/ECS/RenderSystem.cpp" "include/Renderer/Renderer.hpp" "src/Renderer/Renderer.cpp" "include/Renderer/VertexArray.hpp" "src/Renderer/VertexArray.cpp" "include/Renderer/VertexBuffer.hpp" "src/Renderer/VertexBuffer.cpp" "include/Renderer/Buffer.hpp" "src/Renderer/Buffer.cpp" "include/Renderer/Shader.hpp" "src/Renderer/Shader.cpp" "include/Managers/AssetManager.h" "include/Utils/SlotMap.h" "include/Renderer/Texture.h" "src/Renderer/Texture.cpp"
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES

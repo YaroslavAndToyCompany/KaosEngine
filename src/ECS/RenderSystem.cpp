@@ -11,7 +11,7 @@ void RenderSystem::update(float deltatime, World& world)
 	viewComp<TransformComponent>(world,
 		[](auto entity, auto& transform)
 		{
-			Logger::get().log(m_className, "Render update func is called");
+			Logger::get().log(m_className, Logger::ErrType::INFO, "Render update func is called");
 		}
 	);
 }

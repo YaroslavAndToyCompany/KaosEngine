@@ -1,5 +1,4 @@
 #include "Utils/Logger.hpp"
-#include <iostream>
 
 Logger& Logger::get()
 {
@@ -8,12 +7,9 @@ Logger& Logger::get()
     return instance;
 }
 
-void Logger::log(std::string_view className, std::string_view message, ErrType errorType)
+void Logger::logMes()
 {
-    const char* errMessage = convertErrType(errorType);
-    const char* colorMessage = getColorFromErrType(errorType);
-
-    std::cout << colorMessage << "[" << errMessage << "][" << className << "] " << message << std::endl;
+    std::cout << getColorFromErrType(ErrType::INFO) << "\n";
 }
 
 const char* Logger::convertErrType(ErrType errType)
