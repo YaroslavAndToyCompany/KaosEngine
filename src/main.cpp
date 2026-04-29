@@ -1,6 +1,4 @@
 #include "Core/Engine.hpp"
-#include "Memory/StackAllocator.hpp"
-#include "Utils/Logger.hpp"
 
 int main()
 {

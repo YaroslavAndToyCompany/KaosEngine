@@ -1,6 +1,7 @@
 #include "Memory/StackAllocator.hpp"
 
 #include "Utils/Logger.hpp"
+#include <stdexcept>
 
 std::size_t StackAllocator::s_stackSize = 1024;
 
@@ -10,30 +11,21 @@ StackAllocator& StackAllocator::get()
     return stack;
 }
 
-void* StackAllocator::allocate(std::size_t size) 
-{
-    void *memToReturn = m_offsetPtr;
-
-    m_offsetPtr += size;
-
-    Header* header = reinterpret_cast<Header*>(m_offsetPtr);
-    header->sizeOfPrevTakenMem = size;
-
-    m_offsetPtr += sizeof(Header);
-
-    Logger::get().log(m_className, Logger::ErrType::INFO, size + sizeof(Header), " Memory is given for some object");
-    Logger::get().log(m_className, Logger::ErrType::INFO, "Current m_offsetPtr address ", (void*)m_offsetPtr);
-    return memToReturn;
-}
-
 void StackAllocator::deallocate() 
 {
-    m_offsetPtr -= sizeof(Header);
-    Header* header = reinterpret_cast<Header*>(m_offsetPtr);
+    char* headerInitPtr = m_offsetPtr - sizeof(Header);
+    if (headerInitPtr < m_initPtr)
+        throw std::out_of_range("header point out of range of the stackallocator");
 
-    m_offsetPtr -= header->sizeOfPrevTakenMem;
-    Logger::get().log(m_className, Logger::ErrType::INFO, header->sizeOfPrevTakenMem + sizeof(Header), " Memmory is freed from one object");
+    Header* header = reinterpret_cast<Header*>(headerInitPtr);
+
+    m_offsetPtr = header->prevHeaderTopPtr;
     Logger::get().log(m_className, Logger::ErrType::INFO, "Current m_offsetPtr address ", (void*)m_offsetPtr);
+}
+
+std::size_t StackAllocator::size() 
+{
+    return m_offsetPtr - m_initPtr;
 }
 
 StackAllocator::StackAllocator() 
@@ -51,4 +43,9 @@ StackAllocator::~StackAllocator()
 {
     std::free(m_initPtr);
     Logger::get().log(m_className, Logger::ErrType::INFO, "Memmory is freed from the stack");
+}
+
+char* StackAllocator::alignUp(char* addr, std::uint16_t alignment) 
+{
+    return reinterpret_cast<char*>((reinterpret_cast<uintptr_t>(m_offsetPtr) + alignment - 1) & ~(alignment - 1));
 }
