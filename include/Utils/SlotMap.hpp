@@ -2,14 +2,15 @@
 #include <iostream>
 #include <vector>
 #include <limits>
+#include <cstdint>
 
-static constexpr uint32_t INVALID_VALUE = std::numeric_limits<uint32_t>::max();
+static constexpr std::uint32_t INVALID_VALUE = std::numeric_limits<std::uint32_t>::max();
 
 struct AssetHandle
 {
-    uint32_t m_index = INVALID_VALUE;
-    uint32_t m_generation = 0;
-    AssetHandle(uint32_t index = INVALID_VALUE, uint32_t generation = 0)
+    std::uint32_t m_index = INVALID_VALUE;
+    std::uint32_t m_generation = 0;
+    AssetHandle(std::uint32_t index = INVALID_VALUE, std::uint32_t generation = 0)
         : m_index(index), m_generation(generation) {
     }
     bool bIsActive() const { return m_index != INVALID_VALUE; }
@@ -20,15 +21,15 @@ class SlotMap
 {
     struct Slot
     {
-        alignas(T) uint8_t m_data[sizeof(T)]; // array of bytes
-        uint32_t nextFreeIndex = INVALID_VALUE;
-        uint32_t generation = 0;
+        alignas(T) std::uint8_t m_data[sizeof(T)]; // array of bytes
+        std::uint32_t nextFreeIndex = INVALID_VALUE;
+        std::uint32_t generation = 0;
         bool bIsActive = false;
     };
 
     std::vector<Slot> m_slots;
-    uint32_t m_freeindex = INVALID_VALUE;
-    uint32_t m_size = 0;
+    std::uint32_t m_freeindex = INVALID_VALUE;
+    std::uint32_t m_size = 0;
 
 public:
     SlotMap() = default;
@@ -48,7 +49,7 @@ public:
     template<typename... Args>
     AssetHandle insert(Args&&... args)
     {
-        uint32_t index;
+        std::uint32_t index;
         if (m_freeindex != INVALID_VALUE)
         {
             index = m_freeindex;
@@ -57,7 +58,7 @@ public:
         else
         {
             m_slots.emplace_back();
-            index = static_cast<uint32_t>(m_slots.size() - 1);
+            index = static_cast<std::uint32_t>(m_slots.size() - 1);
         }
 
         Slot& slot = m_slots[index];
@@ -69,7 +70,7 @@ public:
         return { index, slot.generation };
     }
 
-    const T* get(AssetHandle handle)
+    const T* get(AssetHandle& handle)
     {
         if (handle.m_index < m_slots.size())
         {
@@ -80,7 +81,7 @@ public:
         return nullptr;
     }
 
-    void erase(AssetHandle handle)
+    void erase(AssetHandle& handle)
     {
         if (handle.m_index >= m_slots.size())
             return;

@@ -1,4 +1,4 @@
-#include "Renderer/Texture.h"
+#include "Renderer/Texture.hpp"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stb_image.h>

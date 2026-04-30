@@ -10,11 +10,12 @@ public:
     static StackAllocator& get();
 
     template <typename T>
-    void* allocate();
+    [[nodiscard]] void* allocate();
 
     void deallocate();
 
     std::size_t size();
+
 private:
     StackAllocator();
     ~StackAllocator();

@@ -8,7 +8,7 @@ Buffer::Buffer(std::initializer_list<BufferElements> bufferElements)
 
 void Buffer::calcuteOffsetAndStride()
 {
-	size_t offset = 0;
+	std::size_t offset = 0;
 	m_stride = 0;
 	for(BufferElements& element : m_bufferElements)
 	{

@@ -14,6 +14,7 @@ set(KAOS_ENGINE_HEADERS
 
     include/Memory/SizeBasedArena.hpp
     include/Memory/StackAllocator.hpp
+    include/Memory/StackAllocatorContainer.hpp
 
     include/Renderer/Buffer.hpp
     include/Renderer/Renderer.hpp

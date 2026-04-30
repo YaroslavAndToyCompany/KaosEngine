@@ -1,8 +1,7 @@
 #include "Renderer/VertexBuffer.hpp"
 #include <glad/glad.h>
 
-
-VertexBuffer::VertexBuffer(float* vertices, uint32_t size)
+VertexBuffer::VertexBuffer(float* vertices, std::uint32_t size)
 {
 	glGenBuffers(1, &m_rendererID);
 	glBindBuffer(GL_ARRAY_BUFFER, m_rendererID);

@@ -5,7 +5,7 @@
 class VertexBuffer
 {
 public:
-	VertexBuffer(float* vertices, uint32_t size);
+	VertexBuffer(float* vertices, std::uint32_t size);
 	VertexBuffer(const VertexBuffer&) = delete;
 	VertexBuffer& operator=(const VertexBuffer&) = delete;
 	~VertexBuffer();
@@ -16,5 +16,5 @@ public:
 	inline const Buffer& getBufferLayout() const { return m_layout; }
 private:
 	Buffer m_layout;
-	uint32_t m_rendererID;
+	std::uint32_t m_rendererID;
 };

@@ -2,5 +2,5 @@
 
 struct TransformComponent
 {
-	float Transform;
+	float transform;
 };

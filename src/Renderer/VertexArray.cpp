@@ -18,13 +18,13 @@ void VertexArray::unbind()
 	glBindVertexArray(0);
 }
 
-void VertexArray::addVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
+void VertexArray::addVertexBuffer(const VertexBuffer* vertexBuffer)
 {
 	this->bind();
 	vertexBuffer->bind();
 	const Buffer& bufferLayout = vertexBuffer->getBufferLayout();
 	if (bufferLayout.getBufferElements().empty())
-		Logger::get().log(m_className, "Buffer elements is empty!", Logger::ErrType::ERROR);
+		Logger::get().log(m_className, Logger::ErrType::ERROR, "Buffer elements is empty!");
 
 	//for(BufferElements& element : bufferLayout.getBufferElements())
 	//{

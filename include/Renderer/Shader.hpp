@@ -1,12 +1,13 @@
 #pragma once
 #include <string>
+#include <cstdint>
 
 class Shader
 {
 public:
-	Shader(unsigned int shaderType, const std::string& sourceCode);
+	Shader(std::uint32_t shaderType, const std::string& sourceCode);
 	~Shader();
 
 private:
-	unsigned int m_handler;
+	std::uint32_t m_handler;
 };

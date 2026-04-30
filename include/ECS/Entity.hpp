@@ -15,22 +15,22 @@ public:
 	{
 		if(!hasComponent<T>())
 			Logger::get().log(m_className, Logger::ErrType::ERROR, "Entity has already component");
-		return m_world->m_registry.template emplace<T>(m_EntityHandler, std::forward<Args>(args)...);
+		return m_world->m_registry.template emplace<T>(m_entityHandler, std::forward<Args>(args)...);
 	}
 
 	template<typename T>
 	T& getComponent()
 	{
-		return m_world->m_registry.get<T>(m_EntityHandler);
+		return m_world->m_registry.get<T>(m_entityHandler);
 	}
 
 	template<typename T>
 	bool hasComponent() 
 	{
-		return m_world->m_registry.all_of<T>(m_EntityHandler);
+		return m_world->m_registry.all_of<T>(m_entityHandler);
 	}
 private:
-	entt::entity m_EntityHandler{ entt::null };
+	entt::entity m_entityHandler{ entt::null };
 	World* m_world = nullptr;
 	static constexpr const char* m_className = "Entity";
 };

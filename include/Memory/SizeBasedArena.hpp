@@ -34,14 +34,14 @@ SizeBasedArena<T, N>::SizeBasedArena()
     if (!m_basePtr) throw std::bad_alloc();
     m_curPtrPos = m_basePtr;
 
-    Logger::get().log(m_className, "Memory is allocated");
+    Logger::get().log(m_className, Logger::ErrType::INFO, "Memory is allocated");
 }
 
 template <class T, std::size_t N>
 SizeBasedArena<T, N>::~SizeBasedArena()
 {
     std::free(m_basePtr);
-    Logger::get().log(m_className, "Memory is deallocated");
+    Logger::get().log(m_className, Logger::ErrType::INFO, "Memory is deallocated");
 }
 
 template <typename T, std::size_t N>
@@ -49,7 +49,7 @@ void* SizeBasedArena<T, N>::allocateOne()
 {
     char* memToReturn = m_curPtrPos;
     m_curPtrPos += sizeof(T);
-    Logger::get().log(m_className, "Memory is given for one object");
+    Logger::get().log(m_className, Logger::ErrType::INFO, "Memory is given for one object");
 
     return memToReturn;
 }
@@ -59,7 +59,7 @@ void* SizeBasedArena<T, N>::allocateArray(std::size_t n)
 {
     char* memToReturn = m_curPtrPos;
     m_curPtrPos += n * sizeof(T);
-    Logger::get().log(m_className, "Memory is given for array of objects");
+    Logger::get().log(m_className, Logger::ErrType::INFO, "Memory is given for array of objects");
 
     return memToReturn;
 }

@@ -10,6 +10,7 @@ set(KAOS_ENGINE_SOURCES
     src/Managers/SceneManager.cpp
 
     src/Memory/StackAllocator.cpp
+    src/Memory/StackAllocatorContainer.cpp
 
     src/Scene/Scene.cpp
 
