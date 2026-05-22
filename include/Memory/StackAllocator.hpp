@@ -25,9 +25,7 @@ private:
 
     char* alignUp(char* addr, std::uint16_t alignment);
 
-    struct Header {
-        char* prevHeaderTopPtr;
-    };
+    using Header = char;
 
     char* m_initPtr = nullptr;
     char* m_offsetPtr = nullptr;
@@ -46,11 +44,9 @@ void* StackAllocator::allocate()
 
     void* memToReturn = m_offsetPtr;
     m_offsetPtr += sizeof(T);
-
-    m_offsetPtr = alignUp(m_offsetPtr, alignof(Header));
-    Header* header = reinterpret_cast<Header*>(m_offsetPtr);
-    header->prevHeaderTopPtr = prevHeaderTopPtr;
-
+    
+    Header* rangeFromPrevToCurHeader = m_offsetPtr;
+    *rangeFromPrevToCurHeader = reinterpret_cast<uintptr_t>(m_offsetPtr) + sizeof(Header) - reinterpret_cast<uintptr_t>(prevHeaderTopPtr);
     m_offsetPtr += sizeof(Header);
 
     Logger::get().log(m_className, Logger::ErrType::INFO, reinterpret_cast<uintptr_t>(m_offsetPtr) - reinterpret_cast<uintptr_t>(prevHeaderTopPtr), " Memory is given for some object");

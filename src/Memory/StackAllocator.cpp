@@ -13,13 +13,11 @@ StackAllocator& StackAllocator::get()
 
 void StackAllocator::deallocate() 
 {
-    char* headerInitPtr = m_offsetPtr - sizeof(Header);
-    if (headerInitPtr < m_initPtr)
+    Header* rangeFromPrevToCurHeader = reinterpret_cast<Header*>(m_offsetPtr - sizeof(Header));
+    if (rangeFromPrevToCurHeader < m_initPtr)
         throw std::out_of_range("header point out of range of the stackallocator");
 
-    Header* header = reinterpret_cast<Header*>(headerInitPtr);
-
-    m_offsetPtr = header->prevHeaderTopPtr;
+    m_offsetPtr = reinterpret_cast<char*>(reinterpret_cast<uintptr_t>(m_offsetPtr) - (*rangeFromPrevToCurHeader));
     Logger::get().log(m_className, Logger::ErrType::INFO, "Current m_offsetPtr address ", (void*)m_offsetPtr);
 }
 
