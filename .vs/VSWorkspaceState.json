@@ -8,14 +8,15 @@
   "ExpandedNodes": [
     "",
     "\\include",
-    "\\include\\Core",
-    "\\include\\Managers",
-    "\\include\\Renderer",
-    "\\include\\Scene",
-    "\\include\\Utils",
+    "\\include\\ECS",
+    "\\include\\Memory",
     "\\src",
-    "\\src\\Core",
-    "\\src\\Renderer"
+    "\\src\\ECS",
+    "\\src\\Managers",
+    "\\src\\Memory",
+    "\\src\\Renderer",
+    "\\src\\Scene"
   ],
+  "SelectedNode": "\\src\\Renderer\\VertexBuffer.cpp",
   "PreviewInSolutionExplorer": true
 }

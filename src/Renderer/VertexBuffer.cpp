@@ -26,5 +26,5 @@ void VertexBuffer::unbind() const
 
 void VertexBuffer::setBufferLayout(Buffer& layout)
 {
-	layout = m_layout;
+	m_layout = layout;
 }

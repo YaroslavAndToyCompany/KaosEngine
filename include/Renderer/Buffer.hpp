@@ -79,7 +79,7 @@ struct BufferElements
 	bool bIsNormalized;
 
 	BufferElements(ShaderType type, const std::string& name, bool normilized = false) 
-		: m_type(type), m_name(name), bIsNormalized(normilized) 
+		: m_type(type), m_name(name), bIsNormalized(normilized), m_size(dataTypeSize(type)), m_offset(0)
 	{}
 };
 
