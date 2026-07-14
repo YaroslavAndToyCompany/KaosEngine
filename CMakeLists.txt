@@ -15,6 +15,15 @@ add_subdirectory(src)
 add_executable(${PROJECT_NAME}
     ${KAOS_ENGINE_HEADERS}
     ${KAOS_ENGINE_SOURCES}
+    include/Renderer/IndexBuffer.h
+    src/Renderer/IndexBuffer.cpp
+    src/Managers/AssetManager.cpp
+    src/Renderer/Shader.cpp
+    src/Renderer/Texture.cpp
+    src/Renderer/Renderer.cpp
+    src/Renderer/VertexArray.cpp
+    src/Renderer/VertexBuffer.cpp
+    src/Renderer/Buffer.cpp
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
