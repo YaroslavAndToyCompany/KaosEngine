@@ -2,14 +2,16 @@
 #include "ECS/System.hpp"
 
 class World;
+class AssetManager;
 
-class RenderSystem : public System 
+class RenderSystem : public System
 {
 public:
-	RenderSystem();
+    RenderSystem(AssetManager& assetManager);
 
-	virtual void update(float deltatime, World& world) override;
+    virtual void update(float deltatime, World& world) override;
 
 private:
-	static constexpr const char* m_className = "RenderSystem";	
+    AssetManager& m_assetManager;
+    static constexpr const char* m_className = "RenderSystem";
 };
