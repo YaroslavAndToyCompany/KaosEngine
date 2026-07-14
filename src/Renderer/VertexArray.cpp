@@ -24,11 +24,19 @@ void VertexArray::addVertexBuffer(const VertexBuffer* vertexBuffer)
 	vertexBuffer->bind();
 	const Buffer& bufferLayout = vertexBuffer->getBufferLayout();
 	if (bufferLayout.getBufferElements().empty())
+	{
 		Logger::get().log(m_className, Logger::ErrType::ERROR, "Buffer elements is empty!");
+		return;
+	}
 
-	//for(BufferElements& element : bufferLayout.getBufferElements())
-	//{
-	//	glEnableVertexAttribArray();
-	//	glVertexAttribPointer(vertexBuffer, element.m_type, );
-	//}
+    for (const auto& element : bufferLayout.getBufferElements())
+    {
+        glEnableVertexAttribArray(m_vboIndexCounter);
+
+        glVertexAttribPointer(m_vboIndexCounter, getComponentCount(element.m_type), dataTypetoGL(element.m_type), element.bIsNormalized ? GL_TRUE : GL_FALSE,
+            bufferLayout.getStride(), reinterpret_cast<const void*>(element.m_offset));
+        m_vboIndexCounter++;
+    }
+
+    m_vertexBuffers.push_back(vertexBuffer);
 }
