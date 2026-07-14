@@ -18,7 +18,7 @@ void VertexArray::unbind()
 	glBindVertexArray(0);
 }
 
-void VertexArray::addVertexBuffer(const VertexBuffer* vertexBuffer)
+void VertexArray::addVertexBuffer(std::unique_ptr<VertexBuffer> vertexBuffer)
 {
 	this->bind();
 	vertexBuffer->bind();
@@ -38,5 +38,12 @@ void VertexArray::addVertexBuffer(const VertexBuffer* vertexBuffer)
         m_vboIndexCounter++;
     }
 
-    m_vertexBuffers.push_back(vertexBuffer);
+	m_vertexBuffers.push_back(std::move(vertexBuffer));
+}
+
+void VertexArray::setIndexBuffer(std::unique_ptr<IndexBuffer> indexBuffer)
+{
+	this->bind();
+	indexBuffer->bind();
+	m_indexBuffers.push_back(std::move(indexBuffer));
 }

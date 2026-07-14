@@ -2,25 +2,26 @@
 #include "ECS/Entity.hpp"
 #include "ECS/Components.hpp"
 #include "Utils/Logger.hpp"
+#include "Renderer/Renderer.hpp"
 
-Scene::Scene() 
+Scene::Scene()
+    : m_renderer(m_assetManager)
 {
-
 }
 
-void Scene::onEnter() 
+void Scene::onEnter()
 {
-	auto player = m_world.createEntity("player");
-	player.addComponent<TransformComponent>();
-	Logger::get().log(m_className, Logger::ErrType::INFO, "Mark is called");
+    Logger::get().log(m_className, Logger::ErrType::INFO, "Entering Scene");
 }
 
 void Scene::onExit()
 {
-
+    Logger::get().log(m_className, Logger::ErrType::INFO, "Exiting Scene");
 }
 
 void Scene::updateScene(float dt)
 {
-	m_renderer.update(dt, m_world);
+    Renderer::beginScene();
+    m_renderer.update(dt, m_world);
+    Renderer::endScene();
 }
